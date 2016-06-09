@@ -77,7 +77,7 @@ steps = 0
 dt = 0.01
 total_sweeps = 2
 tolerance = 1e-1
-duration = 1000.0
+# duration = 1000.0
 
 c_var[:] = c_0 + epsilon * (np.cos(0.105 * x) * np.cos(0.11 * y) + \
                             (np.cos(0.13 * x) * np.cos(0.087 * y))**2 + \
@@ -85,26 +85,24 @@ c_var[:] = c_0 + epsilon * (np.cos(0.105 * x) * np.cos(0.11 * y) + \
 c_var.updateOld()
 solver = Solver()
 
-while elapsed < duration and steps < total_steps:
+while steps < total_steps:
     res0 = eqn.sweep(c_var, dt=dt, solver=solver)
 
     for sweeps in range(total_sweeps):
         res = eqn.sweep(c_var, dt=dt, solver=solver)
 
-    if res < res0 * tolerance:
+    if (res < (res0 * tolerance)):
         steps += 1
-        elapsed += dt
+#       elapsed += dt
         dt *= 1.1
         c_var.updateOld()
-        
-        if (steps%(total_steps/10.0))==0:
-            print steps
-            print elapsed
+
+        if (steps%(total_steps/10.0)==0):
             # record the volume integral of the free energy 
             save_data(f_0_var(c_var).cellVolumeAverage*mesh.numberOfCells, elapsed)
             # pickle the data on c as a function of space at this particular time
-            fp.dump.write({'time' : steps, 'var': c_var}, os.path.join(filepath,'1a{0}.pkl'.format(steps))
-
+            fp.dump.write({'time' : steps, 'var': c_var}, os.path.join(filepath,'1a{0}.pkl'.format(steps)))
+                          
     else:
         dt *= 0.8
         c_var[:] = c_var.old

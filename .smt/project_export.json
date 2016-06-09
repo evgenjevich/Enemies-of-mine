@@ -1,0 +1,42 @@
+{
+  "default_executable": {
+    "path": "/users/aem1/miniconda2/bin/python", 
+    "version": "2.7.11", 
+    "type": "sumatra.programs.PythonExecutable", 
+    "options": "", 
+    "name": "Python"
+  }, 
+  "default_repository": {
+    "url": "/users/aem1/Desktop/gitStuff/Benchmarks/Enemies-of-mine", 
+    "type": "sumatra.versioncontrol._git.GitRepository", 
+    "upstream": "https://github.com/evgenjevich/Enemies-of-mine.git"
+  }, 
+  "name": "benchmark1", 
+  "input_datastore": {
+    "root": "/", 
+    "type": "sumatra.datastore.filesystem.FileSystemDataStore"
+  }, 
+  "default_launch_mode": {
+    "working_directory": "/users/aem1/Desktop/gitStuff/Benchmarks/Enemies-of-mine", 
+    "type": "sumatra.launch.SerialLaunchMode", 
+    "options": null
+  }, 
+  "record_store": {
+    "db_file": "/users/aem1/Desktop/gitStuff/Benchmarks/Enemies-of-mine/.smt/records", 
+    "type": "sumatra.recordstore.django_store.DjangoRecordStore"
+  }, 
+  "plugins": [], 
+  "data_store": {
+    "root": "/users/aem1/Desktop/gitStuff/Benchmarks/Enemies-of-mine/Data", 
+    "type": "sumatra.datastore.filesystem.FileSystemDataStore"
+  }, 
+  "on_changed": "store-diff", 
+  "data_label": "parameters", 
+  "default_main_file": "benchmark1a.py", 
+  "label_generator": "uuid", 
+  "_most_recent": "fb05af6afdcf", 
+  "sumatra_version": "0.8dev", 
+  "allow_command_line_parameters": true, 
+  "timestamp_format": "%Y%m%d-%H%M%S", 
+  "description": ""
+}
